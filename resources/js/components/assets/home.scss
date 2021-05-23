@@ -1,0 +1,156 @@
+$box: 0px 0px 10px -7px rgba(0, 0, 0, 0.75);
+$box-moz: 0px 0px 10px -7px rgba(0, 0, 0, 0.75);
+$box-webkit: 0px 0px 10px -7px rgba(0, 0, 0, 0.75);
+$color: rgb(0, 171, 85);
+
+.ano-bor {
+    position: absolute;
+    top: -100px;
+    left: -100px;
+    width: 200px;
+    height: 200px;
+    border-top-right-radius: 80%;
+    border-bottom-right-radius: 80%;
+    background-color: rgb(0, 171, 85);
+    z-index: 1;
+}
+
+.group {
+    display: flex;
+    align-items: center;
+}
+
+.grids {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    .cols {
+        padding: 15px;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .vertical {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            h5 {
+                font-family: "Carter One", cursive;
+            }
+        }
+        h3 {
+            font-family: "Carter One", cursive;
+        }
+        p {
+            font-size: 12px;
+            font-family: "Open Sans", sans-serif;
+        }
+        button {
+            border: none;
+            outline: none;
+            background-color: white;
+            width: 100px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            box-shadow: $box;
+            -webkit-box-shadow: $box-webkit;
+            -moz-box-shadow: $box-moz;
+            font-family: "Kanit", sans-serif;
+            color: $color;
+            &:first-child {
+                margin-right: 10px;
+                background-color: $color;
+                color: white;
+                transition: 500ms ease-in-out;
+                &:hover {
+                    background-color: white;
+                    color: $color;
+                }
+            }
+        }
+        .coffe-icon {
+            width: 100%;
+            max-height: 400px;
+            min-height: 100%;
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .name {
+            font-family: "Kanit", sans-serif;
+            text-transform: capitalize;
+            color: rgb(0, 171, 85);
+        }
+    }
+}
+
+@media screen and (max-width: 539px) {
+    .ano-bor {
+        display: none;
+        visibility: hidden;
+    }
+}
+
+@media screen and (min-width: 540px) {
+    .headers {
+        background-size: 100% 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        position: relative;
+        background-color: white;
+        overflow: hidden;
+        .grids {
+            display: flex;
+            flex-direction: row;
+            .cols {
+                padding: 0px;
+                width: 50%;
+                height: 65vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                &:first-child {
+                    padding: 0px 15px 0px 15px;
+                }
+                .vertical {
+                    h5 {
+                        font-family: "Carter One", cursive;
+                    }
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: column;
+                    .coffe-icon {
+                        width: 100%;
+                        height: 100%;
+                        max-height: 300px;
+                        background-size: 100% 100%;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 821px) {
+    .headers {
+        .grids {
+            padding-top: 30px;
+            .cols {
+                .content {
+                    width: 80%;
+                }
+                p {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}
