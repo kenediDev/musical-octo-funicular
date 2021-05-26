@@ -1,0 +1,287 @@
+$box: 0px 0px 10px -7px rgba(0, 0, 0, 0.75);
+$box-moz: 0px 0px 10px -7px rgba(0, 0, 0, 0.75);
+$box-webkit: 0px 0px 10px -7px rgba(0, 0, 0, 0.75);
+
+.ano-effect {
+    width: 200px;
+    height: 200px;
+    background-color: rgb(0, 171, 85);
+    border-radius: 100%;
+    position: absolute;
+    top: -80px;
+    left: -80px;
+}
+
+.back {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    display: flex;
+    align-items: center;
+    span {
+        font-weight: bold;
+        margin-right: 15px;
+        font-family: "Kanit", sans-serif;
+    }
+    button {
+        margin: 0;
+        justify-content: space-evenly;
+        width: 140px;
+    }
+}
+
+.auth {
+    position: relative;
+    background-color: white;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.field {
+    margin-bottom: 15px;
+}
+
+#field-input {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    box-shadow: $box;
+    -webkit-box-shadow: $box-webkit;
+    -moz-box-shadow: $box-moz;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+#field-checked {
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+#field-date {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.group {
+    display: flex;
+    align-items: center;
+    label {
+        padding: 0;
+        margin: 0;
+        font-weight: bold;
+        font-family: "Kanit", sans-serif;
+    }
+}
+
+.radio {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    box-shadow: $box;
+    -webkit-box-shadow: $box-webkit;
+    -moz-box-shadow: $box-moz;
+    border-radius: 10px;
+    margin-right: 5px;
+}
+
+#field-checked,
+#field-input,
+#field-textarea,
+#field-date {
+    width: 96% !important;
+}
+
+#field-text {
+    width: 96% !important;
+    h4 {
+        margin: 0;
+        padding: 0px 0px 15px 0px;
+    }
+    font-family: "Kanit", sans-serif;
+}
+
+input[type="date"] {
+    border: none;
+    outline: none;
+}
+
+.vertical {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    width: 96%;
+    label {
+        margin-left: 10px;
+        font-weight: bold;
+        font-family: "Kanit", sans-serif;
+    }
+    .field {
+        margin: 0;
+    }
+}
+
+#calendar {
+    background-color: white;
+    box-shadow: $box;
+    -webkit-box-shadow: $box-webkit;
+    -moz-box-shadow: $box-moz;
+    height: 40px;
+    width: auto;
+    border: none;
+    outline: none;
+    padding: 0px 15px 0px 15px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.box {
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: $box;
+    -webkit-box-shadow: $box-webkit;
+    -moz-box-shadow: $box-moz;
+    border-radius: 5px;
+    background-color: rgb(0, 171, 85);
+    .icon {
+        width: 15px;
+        height: 15px;
+    }
+}
+
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    padding: 0px 15px 0px 15px;
+}
+
+#field-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: "Kanit", sans-serif;
+}
+
+button,
+#back {
+    border: none;
+    outline: none;
+    width: 200px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(0, 171, 85);
+    color: white;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: $box;
+    -webkit-box-shadow: $box-webkit;
+    -moz-box-shadow: $box-moz;
+    position: relative;
+}
+
+#back {
+    width: 140px;
+    justify-content: space-around;
+    background-color: white;
+    color: rgb(0, 171, 85);
+    height: 32px;
+    margin-bottom: 0;
+}
+
+.spin {
+    width: 20px;
+    height: 20px;
+    border-radius: 90px;
+    border: solid 2px white;
+    border-top: none;
+    border-bottom: none;
+    position: absolute;
+    right: 10px;
+    animation: spin 500ms infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(20deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+a {
+    color: rgb(0, 171, 85);
+    text-decoration: none;
+}
+
+h4 {
+    margin-bottom: 40px;
+    font-family: "Carter One", cursive;
+}
+
+@media screen and (min-width: 369px) {
+    .back {
+        span {
+            color: rgb(0, 171, 85);
+        }
+    }
+}
+
+@media screen and (max-width: 280px) {
+    .back {
+        span {
+            color: white;
+        }
+        #back {
+            span {
+                color: rgb(0, 171, 85);
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 451px) {
+    #field-input,
+    #field-button,
+    #field-text,
+    #field-checked {
+        width: 400px;
+    }
+    .vertical {
+        width: 400px;
+    }
+}

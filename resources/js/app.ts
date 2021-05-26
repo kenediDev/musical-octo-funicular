@@ -1,6 +1,7 @@
 import Vue from "vue";
 import BaseComponent from "./components/base.component.vue";
 import router from "./routes";
+import store from "./store";
 import InlineSvg from "vue-inline-svg";
 import "csspin/csspin.css";
 import moment from "moment";
@@ -31,5 +32,6 @@ Vue.use(VueMoment, {
 const app = new Vue({
     el: "#app",
     router,
+    store,
     render: h => h(BaseComponent)
 });

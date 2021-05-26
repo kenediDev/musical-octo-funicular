@@ -1,0 +1,111 @@
+$box: 0px 0px 10px -7px rgba(0, 0, 0, 0.75);
+$box-moz: 0px 0px 10px -7px rgba(0, 0, 0, 0.75);
+$box-webkit: 0px 0px 10px -7px rgba(0, 0, 0, 0.75);
+
+.modals,
+.modals-close {
+    position: fixed;
+    width: 100%;
+    height: 85%;
+    background-color: white;
+    z-index: 2;
+    border-top-right-radius: 40px;
+    border-top-left-radius: 40px;
+    padding: 20px 15px 0px 15px;
+    box-shadow: $box;
+    -webkit-box-shadow: $box-webkit;
+    -moz-box-shadow: $box-moz;
+    overflow: hidden;
+    .modals-content {
+        width: 100%;
+        height: 100%;
+        .close {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            box-shadow: $box;
+            -webkit-box-shadow: $box-webkit;
+            -moz-box-shadow: $box-moz;
+            align-items: center;
+            justify-content: center;
+            top: 0;
+            right: 0;
+            background-color: green;
+            color: white;
+            border-top-left-radius: 0;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 20px;
+        }
+    }
+}
+
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+#upload-background {
+    width: 160px;
+    height: 32px;
+    font-weight: bold;
+    font-family: "Kanit", sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border: none;
+    outline: none;
+    background-color: white;
+    box-shadow: $box;
+    -webkit-box-shadow: $box-webkit;
+    -moz-box-shadow: $box-moz;
+    color: #0000009c;
+    border-radius: 10px;
+}
+
+.upload-btn-wrapper input[type="file"] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    width: auto !important;
+    height: auto !important;
+    z-index: 4;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+}
+
+.hidden {
+    display: none;
+    visibility: hidden;
+}
+
+.modals {
+    animation: modals 2s forwards;
+}
+
+.modals-close {
+    animation: modals-close 2s forwards;
+}
+
+@keyframes modals {
+    from {
+        bottom: -100%;
+    }
+    to {
+        bottom: 0;
+    }
+}
+
+@keyframes modals-close {
+    from {
+        bottom: 0;
+    }
+    to {
+        bottom: -100%;
+    }
+}

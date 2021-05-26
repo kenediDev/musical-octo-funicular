@@ -90,6 +90,10 @@ a {
     height: 20px;
 }
 
+#cursor {
+    cursor: pointer;
+}
+
 .group {
     display: flex;
     align-items: center;
@@ -108,6 +112,7 @@ a {
     justify-content: center;
     width: 32px;
     height: 32px;
+    cursor: pointer;
 }
 
 #box-mr {
@@ -163,6 +168,9 @@ a {
 }
 
 @media screen and (min-width: 540px) {
+    #cursor {
+        margin-right: 20px;
+    }
     .block-nav {
         display: none;
         visibility: hidden;
@@ -246,6 +254,19 @@ a {
                 color: white;
             }
         }
+        .dashboard {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            right: 60px;
+            border-radius: 10px;
+            box-shadow: $box;
+            -webkit-box-shadow: $box-webkit;
+            -moz-box-shadow: $box-moz;
+        }
     }
 }
 
@@ -261,5 +282,91 @@ a {
     .login {
         display: none;
         visibility: hidden;
+    }
+}
+
+// Tab
+
+.tab {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 62px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #43966c;
+    box-shadow: rgb(0 171 85 / 24%) 0px 8px 16px 0px;
+    -webkit-box-shadow: rgb(0 171 85 / 24%) 0px 8px 16px 0px;
+    -moz-box-shadow: rgb(0 171 85 / 24%) 0px 8px 16px 0px;
+}
+
+.tab {
+    &::before {
+        position: absolute;
+        top: 0;
+        content: '';
+        height: 12px;
+        width: 100%;
+        border-bottom-left-radius: 2rem;
+        border-bottom-right-radius: 2rem;
+        background-color: white;
+    }
+    button {
+        border: none;
+        outline: none;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: transparent;
+        margin-top: 10px;
+        .icon {
+            width: 18px;
+            height: 18px;
+        }
+    }
+    .button {
+        position: relative;
+        margin: 0px 30px 0px 30px;
+        button {
+            margin: 0;
+            position: absolute;
+            background-color: #43966c;
+            width: 60px;
+            height: 60px;
+            border: solid 10px white;
+            border-radius: 10rem;
+            top: -20px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            box-shadow: rgb(0, 171, 85) 0px 0px 6px 0px;
+            -webkit-box-shadow: rgb(0, 171, 85) 0px 0px 6px 0px;
+            -moz-box-shadow: rgb(0, 171, 85) 0px 0px 6px 0px;
+        }
+        .before {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            .divider {
+                z-index: -1;
+                position: absolute;
+                top: 60%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                content: "";
+                background-color: white;
+                width: 100px;
+                height: 30px;
+                position: absolute;
+                border-bottom-left-radius: 15px;
+                border-bottom-right-radius: 15px;
+            }
+        }
     }
 }

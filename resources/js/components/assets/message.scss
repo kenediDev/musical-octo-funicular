@@ -1,0 +1,128 @@
+$box: 0px 0px 10px -7px rgba(0, 0, 0, 0.75);
+$box-moz: 0px 0px 10px -7px rgba(0, 0, 0, 0.75);
+$box-webkit: 0px 0px 10px -7px rgba(0, 0, 0, 0.75);
+
+.message-success,
+.message-error,
+.message-close {
+    position: fixed;
+    width: 90%;
+    padding: 5px 10px 5px 10px;
+    color: white;
+    font-family: "Kanit", sans-serif;
+    font-size: 13px;
+    font-weight: normal;
+    box-shadow: $box;
+    z-index: 10;
+    -webkit-box-shadow: $box-webkit;
+    -moz-box-shadow: $box-moz;
+    display: flex;
+    .block {
+        height: 100%;
+        margin-right: 20px;
+        position: relative;
+        button {
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            border: none;
+            outline: none;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: $box;
+            -webkit-box-shadow: $box-webkit;
+            -moz-box-shadow: $box-moz;
+        }
+    }
+}
+
+#disabled {
+    cursor: no-drop;
+}
+
+.message-success,
+.message-close {
+    background-color: rgb(0, 171, 85);
+    .block {
+        button {
+            i {
+                color: rgb(0, 171, 85);
+            }
+        }
+    }
+}
+
+.message-error,
+.message-close {
+    background-color: red;
+    .block {
+        button {
+            i {
+                color: red;
+            }
+        }
+    }
+}
+
+.message,
+.message-success,
+.message-error {
+    animation: message 2s forwards;
+}
+
+.message-close {
+    animation: message-close 2s forwards;
+}
+
+.hidden {
+    display: none;
+    visibility: hidden;
+}
+
+@keyframes message {
+    from {
+        bottom: -1200px;
+    }
+    to {
+        right: 0;
+        bottom: 0;
+    }
+}
+
+@keyframes message-close {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@media screen and (min-width: 411px) {
+    @keyframes message {
+        from {
+            right: -1200px;
+            bottom: 0;
+            height: auto;
+        }
+        to {
+            width: 360px;
+            right: 0;
+            bottom: 0;
+            height: auto;
+        }
+    }
+    @keyframes message-close {
+        from {
+            opacity: 1;
+        }
+        to {
+            opacity: 0;
+        }
+    }
+}

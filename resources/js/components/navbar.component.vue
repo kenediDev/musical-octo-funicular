@@ -4,25 +4,28 @@
     <div class="nav">
       <icon :src="logo" class="icon" />
       <div class="group" id="web">
-        <a href="" class="active">
+        <a href="#" class="active">
           <icon :src="home" class="icon" />
           <span>Home</span>
         </a>
-        <a href="">
+        <a href="#">
           <icon :src="menu" class="icon" />
           <span>Menu</span>
         </a>
-        <a href="">
+        <a href="#">
           <icon :src="newspaper" class="icon" />
           <span>What's New</span>
         </a>
-        <a href="">
+        <a href="#">
           <icon :src="contact" class="icon" />
           <span>Contact Us</span>
         </a>
-        <a href="" class="login">
+        <a href="#" @click="clickRouter('login')" class="login" v-if="!token">
           <span>Log in</span>
           <i class="fas fa-arrow-right"></i>
+        </a>
+        <a href="#" class="dashboard" @click="clickRouter('dashboard')">
+          <icon :src="dashboard" class="icon" />
         </a>
       </div>
     </div>
@@ -45,7 +48,7 @@
           <icon :src="twitter" class="icon" />
         </div>
       </div>
-      <i class="fas fa-times" @click="clickNotice()"></i>
+      <i class="fas fa-times" @click="clickNotice()" id="cursor"></i>
     </div>
     <!-- Navbar Bottom -->
     <div class="nav-bottom">
@@ -83,7 +86,7 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { Component } from "vue-property-decorator";
+import { Component, Emit } from "vue-property-decorator";
 import logo from "./media/148702861_172413527739423_1030808571604752175_n (3).svg";
 import home from "./media/house (1).svg";
 import menu from "./media/menu.svg";
@@ -92,9 +95,15 @@ import contact from "./media/complain.svg";
 import Instgram from "./media/instagram.svg";
 import Facebook from "./media/facebook.svg";
 import Twitter from "./media/twitter.svg";
+import dashboard from "./media/admin.svg";
 
 @Component({})
 export default class NavbarComponent extends Vue {
+  // Props
+  @Emit()
+  clickRouter(args: string) {
+    this.$emit("clickRouter", args);
+  }
   // Media
   logo = logo;
   home = home;
@@ -104,9 +113,11 @@ export default class NavbarComponent extends Vue {
   facebook = Facebook;
   instagram = Instgram;
   twitter = Twitter;
+  dashboard = dashboard;
   // State
   choice: string = "home";
   notice: number = 1;
+  token: boolean = false;
   // bind
   clickChoice(args: string) {
     this.choice = args;
@@ -123,6 +134,11 @@ export default class NavbarComponent extends Vue {
   beforeMount() {
     if (localStorage.getItem("notice")) {
       this.notice = 0;
+    }
+    if (localStorage.getItem("token")) {
+      this.token = true;
+    } else {
+      this.token = false;
     }
   }
 }
