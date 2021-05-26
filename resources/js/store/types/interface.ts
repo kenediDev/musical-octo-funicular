@@ -49,13 +49,14 @@ export interface UserState {
 type Modals = "profile" | "dashboardDialog";
 
 export interface Update {
+    id?: number;
     name?: string;
     title?: string;
     description?: string;
     price?: string;
     photo?: any;
     gender?: string;
-    calendar?: Date;
+    calendar?: string;
     modals?: {
         type?: Modals | string;
         open?: number;

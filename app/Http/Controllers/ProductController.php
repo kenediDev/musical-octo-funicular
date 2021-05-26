@@ -88,6 +88,7 @@ class ProductController extends Controller
             'name' => 'required|unique:product|min:2',
             'price' => 'required',
             'stock' => 'required',
+            'description' => 'required',
             'category_id' => 'required'
         ]);
         if ($val->fails()) {
@@ -102,6 +103,7 @@ class ProductController extends Controller
         $create = Product::create([
             'name' => $request->name,
             'image' => $files,
+            'description' => $request->description,
             'price' => $request->price,
             'stock' => $request->stock,
             'category_id' => $request->category_id,
@@ -122,6 +124,7 @@ class ProductController extends Controller
         }
         $val = Validator::make($request->all(), [
             'name' => 'required|unique:product|min:2',
+            'description' => 'required',
             'price' => 'required',
             'stock' => 'required',
             'category_id' => 'required'
@@ -141,6 +144,7 @@ class ProductController extends Controller
         }
         $find->price = $request->price;
         $find->stock = $request->stock;
+        $find->description = $request->description;
         $find->sold = $request->sold;
         $find->category_id = $request->category_id;
         $find->save();

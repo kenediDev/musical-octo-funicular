@@ -137,7 +137,6 @@ $box-webkit: 0px 0px 10px -7px rgba(0, 0, 0, 0.75);
 .section {
     padding: 20px 10px 0px 10px;
     width: 100%;
-    height: 100vh;
     background-color: white;
     border-top-right-radius: 2rem !important;
     border-top-left-radius: 2rem !important;
@@ -171,12 +170,37 @@ $box-webkit: 0px 0px 10px -7px rgba(0, 0, 0, 0.75);
     align-items: center;
     flex-direction: column;
     justify-content: center;
+    .group {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        .box {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: $box;
+            -webkit-box-shadow: $box-webkit;
+            -moz-box-shadow: $box-moz;
+            margin: 2px 0px 2px 0px;
+            .icon {
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
     .nickname {
         width: 200px;
         text-align: center;
         word-wrap: break-word;
         color: black;
         font-family: "Kanit", sans-serif;
+        padding: 0;
+        margin: 0;
+        line-height: 15px;
     }
     .status {
         font-weight: bold;

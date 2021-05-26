@@ -2,6 +2,7 @@
   <div>
     <navbar v-if="navbar" v-on:clickRouter="clickRouter($event)" />
     <router-view
+      :id="id"
       :title="title"
       :description="description"
       :uname="name"
@@ -10,6 +11,7 @@
       :photo_url="photo_url"
       :gender="gender"
       :message="message"
+      v-on:changeId="changeId($event)"
       v-on:changeName="changeName($event)"
       v-on:changeTitle="changeTitle($event)"
       v-on:changeDescription="changeDescription($event)"
@@ -49,6 +51,7 @@ export default class BaseComponent extends Vue {
   // Disabled
   navbar: boolean = true;
   // State
+  id: number = 0;
   name: string = "";
   title: string = "";
   description: string = "";
@@ -56,10 +59,11 @@ export default class BaseComponent extends Vue {
   photo: any = "";
   photo_url: string = "";
   gender: string = "";
-  calendar: Date = new Date();
+  calendar: string = "";
 
   // Clear
   reset() {
+    this.id = 0;
     this.name = "";
     this.title = "";
     this.description = "";
@@ -67,10 +71,13 @@ export default class BaseComponent extends Vue {
     this.photo = "";
     this.photo_url = "";
     this.gender = "";
-    this.calendar = new Date();
+    this.calendar = "";
     this.$store.commit("message", { loading: false });
   }
   // Bind
+  changeId(args: any) {
+    this.id = args;
+  }
   changeName(args: any) {
     this.name = args.target.value;
   }
@@ -96,6 +103,7 @@ export default class BaseComponent extends Vue {
 
   // Bind Update
   updateField(args: Update) {
+    this.id = args.id;
     this.name = args.name;
     this.title = args.title;
     this.description = args.description;
@@ -112,6 +120,8 @@ export default class BaseComponent extends Vue {
         break;
       case "dashboardDialog":
         this.$store.commit("dashboardDialog", args.modals.open);
+      case "productDropdown":
+        this.$store.commit("productDropdown", args.modals.open);
       default:
         break;
     }
@@ -138,6 +148,7 @@ export default class BaseComponent extends Vue {
     if (localStorage.getItem("token")) {
       this.$store.dispatch("me");
     }
+    this.$store.dispatch("listProduct");
     if (
       this.$route.name === "login" ||
       this.$route.name === "reset" ||

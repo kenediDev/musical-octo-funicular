@@ -39,10 +39,13 @@ const actions = {
 };
 
 const mutations = {
-    listProduct: (results: ProductState, product: Product[]) =>
-        (results.product = product)
+    listProduct: (results: ProductState, product: Product[]) => {
+        results.product = product;
+    }
 };
-const getters = {};
+const getters = {
+    listProduct: (results: ProductState) => results.product
+};
 export default {
     state,
     actions,

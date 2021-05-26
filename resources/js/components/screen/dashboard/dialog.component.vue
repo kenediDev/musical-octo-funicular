@@ -119,7 +119,7 @@ export default class DialogComponent extends Vue {
   @Prop(String) uname: string;
   @Prop(String) description: string;
   @Prop(String) gender_: string;
-  @Prop(Date) calendar_: Date;
+  @Prop(String) calendar_: string;
   // Props Bind
 
   @Emit()

@@ -10,71 +10,87 @@
           :style="'background-image:url(' + me.accounts.background + ')'"
         ></div>
       </div>
-      <div class="section">
-        <div class="bg-avatar">
-          <div
-            class="avatar"
-            :style="
-              message.soft_loading === 'avatar'
-                ? ''
-                : 'background-image: url(' + me.accounts.avatar + ');'
-            "
-          >
-            <div class="upload-avatar">
-              <div class="upload-btn-wrapper">
-                <input
-                  type="file"
-                  name=""
-                  id=""
-                  ref="avatar"
-                  @change="changeAvatar()"
-                />
-                <button>
-                  <icon :src="camera" class="icon" />
-                </button>
+      <div>
+        <div class="section">
+          <div class="bg-avatar">
+            <div
+              class="avatar"
+              :style="
+                message.soft_loading === 'avatar'
+                  ? ''
+                  : 'background-image: url(' + me.accounts.avatar + ');'
+              "
+            >
+              <div class="upload-avatar">
+                <div class="upload-btn-wrapper">
+                  <input
+                    type="file"
+                    name=""
+                    id=""
+                    ref="avatar"
+                    @change="changeAvatar()"
+                  />
+                  <button>
+                    <icon :src="camera" class="icon" />
+                  </button>
+                </div>
+              </div>
+              <icon
+                v-if="message.soft_loading === 'avatar'"
+                :src="sync"
+                class="sync"
+                id="sync"
+              />
+              <div class="upload-background">
+                <div class="upload-btn-wrapper">
+                  <input
+                    type="file"
+                    name=""
+                    id=""
+                    ref="background"
+                    @change="changeBackground()"
+                  />
+                  <button class="cover">
+                    <icon :src="gallery" class="icon" />
+                    <span>Change</span>
+                  </button>
+                </div>
               </div>
             </div>
-            <icon
-              v-if="message.soft_loading === 'avatar'"
-              :src="sync"
-              class="sync"
-              id="sync"
-            />
-            <div class="upload-background">
-              <div class="upload-btn-wrapper">
-                <input
-                  type="file"
-                  name=""
-                  id=""
-                  ref="background"
-                  @change="changeBackground()"
+          </div>
+          <button
+            class="cog"
+            @click="
+              updateField({
+                name: me.accounts.first_name,
+                description: me.accounts.last_name,
+                gender: me.accounts.gender,
+                calendar: me.accounts.brithday,
+                modals: { type: 'dashboardDialog', open: 1 },
+              })
+            "
+          >
+            <i class="fas fa-cog"></i>
+          </button>
+          <div class="vertical">
+            <a class="nickname" href=""> First Name And Last Name </a>
+            <div class="group">
+              <span class="status">Admin</span>
+              <div class="box">
+                <icon
+                  :src="me.accounts.gender === 'male' ? waiter : female"
+                  class="icon"
                 />
-                <button class="cover">
-                  <icon :src="gallery" class="icon" />
-                  <span>Change</span>
-                </button>
               </div>
             </div>
           </div>
         </div>
-        <button
-          class="cog"
-          @click="
-            updateField({
-              name: me.accounts.first_name,
-              description: me.accounts.last_name,
-              gender: me.accounts.gender,
-              calendar: me.accounts.brithday,
-              modals: { type: 'dashboardDialog', open: 1 },
-            })
-          "
-        >
-          <i class="fas fa-cog"></i>
-        </button>
-        <div class="vertical">
-          <a class="nickname" href=""> First Name And Last Name </a>
-          <span class="status">Admin</span>
-        </div>
+        <!-- Content -->
+        <contents
+          :id="id"
+          v-on:updateField="updateField($event)"
+          v-on:changeId="changeId($event)"
+        />
       </div>
     </div>
     <!--  -->
@@ -117,12 +133,16 @@ import sync from "../media/sync.svg";
 import gallery from "../media/gallery.svg";
 import drawer from "./dashboard/drawer.component.vue";
 import dialogs from "./dashboard/dialog.component.vue";
+import waiter from "../media/waiter.svg";
+import female from "../media/female.svg";
+import contents from "./dashboard/content.component.vue";
 
 @Component({
   components: {
     tab: Tab,
     drawer,
     dialogs,
+    contents,
   },
   computed: {
     ...mapGetters(["dashboard", "message"]),
@@ -134,8 +154,11 @@ export default class DashboardComponent extends Vue {
   camera = camera;
   logo = logo;
   gallery = gallery;
+  waiter = waiter;
+  female = female;
   // Prop
   @Prop(Object) me: User;
+  @Prop(Number) id: number;
   @Prop(String) uname: string;
   @Prop(String) title: string;
   @Prop(String) description: string;
@@ -146,6 +169,9 @@ export default class DashboardComponent extends Vue {
   @Prop(String) calendar: string;
   // Props Bind
   @Emit()
+  changeId(args: any) {
+    this.$emit("changeId", args);
+  }
   changeName(args: any) {
     this.$emit("changeName", args);
   }

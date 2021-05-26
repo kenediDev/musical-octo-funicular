@@ -69,11 +69,13 @@ class ProductTest extends TestCase
             if ($category) {
                 $response = $this->actingAs($auth, 'api')->post('/api/v1/product', [
                     'name' => $faker->name(),
+                    'description' => $faker->text(200),
                     'image' => $faker->imageUrl(),
                     'price' => $faker->randomFloat(10000, 15000, 400000),
                     'stock' => $faker->randomDigitNot(5),
                     'category_id' => $category->id,
                 ]);
+
                 $response->assertStatus(201);
                 $this->assertEquals($response['message'], 'Product telah dibuat');
                 $this->assertNotEquals($response['message'], null);
@@ -91,6 +93,7 @@ class ProductTest extends TestCase
                 if ($product) {
                     $response = $this->actingAs($auth, 'api')->post('/api/v1/product/' . $product->id, [
                         'name' => $faker->name(),
+                        'description' => $faker->text(200),
                         'image' => $faker->imageUrl(),
                         'price' => $faker->randomFloat(10000, 15000, 400000),
                         'sold' => $faker->boolean(),
